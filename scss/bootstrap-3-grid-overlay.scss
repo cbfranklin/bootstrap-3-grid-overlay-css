@@ -1,11 +1,13 @@
-$gridColorPrimary : rgb(136,181,2333);
-$gridColorSecondary : rgb(216,125,245);
-$gridColorTertiary : rgb(131,245,164);
+$gridColorPrimary : rgba(136,181,233,1);
+$gridColorSecondary : rgba(216,125,245,1);
+$gridColorTertiary : rgba(131,245,164,1);
 
 $colPadding : 10px;
 
 @mixin gridOverlay($gridColor){
-  // awesome scss loopage for gradient stops (@jackiebackwards https://codepen.io/jackiebackwards/pen/Fzkvg)
+
+  // awesome scss loopage for gradient stops
+  // (@jackiebackwards https://codepen.io/jackiebackwards/pen/Fzkvg)
   $first-stops: transparent #{$colPadding},
                 $gridColor #{$colPadding};
 
@@ -27,6 +29,7 @@ $colPadding : 10px;
   background-size:cover;
 }
 
+// currently supporting 3 nested grids
 .row{
   @include gridOverlay($gridColorPrimary);
 }
