@@ -1,0 +1,23 @@
+{
+  "name": "bootstrap-3-grid-overlay-css",
+  "version": "0.0.2",
+  "description": "Visual overlay of 12-col grid on bootstrap .rows",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cbfranklin/bootstrap-3-grid-overlay-css.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cbfranklin/bootstrap-3-grid-overlay-css/issues"
+  },
+  "homepage": "https://github.com/cbfranklin/bootstrap-3-grid-overlay-css#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0"
+  }
+}
