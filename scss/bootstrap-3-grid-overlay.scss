@@ -1,25 +1,27 @@
 $gridColorPrimary : rgba(136,181,233,1);
 $gridColorSecondary : rgba(216,125,245,1);
 $gridColorTertiary : rgba(131,245,164,1);
-
 $colPadding : 10px;
+$numOfCols : 12;
+
+$colWidth : (100 / $numOfCols);
 
 @mixin gridOverlay($gridColor){
-
   // awesome scss loopage for gradient stops
   // (@jackiebackwards https://codepen.io/jackiebackwards/pen/Fzkvg)
   $first-stops: transparent #{$colPadding},
                 $gridColor #{$colPadding};
 
   $last-stops: $gridColor calc(100% - #{$colPadding}),
-                transparent calc(100% - #{$colPadding});
+               transparent calc(100% - #{$colPadding});
 
 
-  @for $i from 1 through 11 {
-    $new-stops:  $gridColor calc(#{$i*8.333}% - #{$colPadding}),
-                transparent calc(#{$i*8.333}% - #{$colPadding}),
-                transparent calc(#{$i*8.333}% + #{$colPadding}),
-                $gridColor calc(#{$i*8.333}% + #{$colPadding});
+  @for $i from 1 through ($numOfCols - 1) {
+    $new-stops: $gridColor calc(#{$i*$colWidth}% - #{$colPadding}),
+                transparent calc(#{$i*$colWidth}% - #{$colPadding}),
+                transparent calc(#{$i*$colWidth}% + #{$colPadding}),
+                $gridColor calc(#{$i*$colWidth}% + #{$colPadding});
+
     $first-stops: join($first-stops, $new-stops, comma);
   }
 
