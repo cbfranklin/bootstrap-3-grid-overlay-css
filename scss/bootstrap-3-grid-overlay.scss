@@ -63,6 +63,20 @@ $colWidth : (100 / $numOfCols);
   @include gridOverlay($colCenteredColor);
 }
 
-.row > div > *:after{
-  content:attr(class);
+.row,
+.col-centered-1,
+.col-centered-2,
+.col-centered-3,
+.col-centered-4,
+.col-centered-5,
+.col-centered-6,
+.col-centered-7,
+.col-centered-8,
+.col-centered-9,
+.col-centered-10,
+.col-centered-11,
+.col-centered-12{
+  &::after{
+    content: attr(class);
+  }
 }
