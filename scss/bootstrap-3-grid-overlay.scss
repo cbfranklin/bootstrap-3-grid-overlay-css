@@ -1,6 +1,10 @@
-$gridColorPrimary : rgba(136,181,233,1);
-$gridColorSecondary : rgba(216,125,245,1);
-$gridColorTertiary : rgba(131,245,164,1);
+$rowColor1: #d28720;
+$rowColor2: #ffa120;
+$rowColor3: #fcba5f;
+$rowColor4: #fed49a;
+
+$colCenteredColor: #4ccecf;
+
 $colPadding : 10px;
 $numOfCols : 12;
 
@@ -32,11 +36,33 @@ $colWidth : (100 / $numOfCols);
 
 // currently supporting 3 nested grids
 .row{
-  @include gridOverlay($gridColorPrimary);
+  @include gridOverlay($rowColor1);
 }
 .row .row{
-  @include gridOverlay($gridColorSecondary);
+  @include gridOverlay($rowColor2);
 }
 .row .row .row{
-  @include gridOverlay($gridColorTertiary);
+  @include gridOverlay($rowColor3);
+}
+.row .row .row .row{
+  @include gridOverlay($rowColor4);
+}
+
+.col-centered-1,
+.col-centered-2,
+.col-centered-3,
+.col-centered-4,
+.col-centered-5,
+.col-centered-6,
+.col-centered-7,
+.col-centered-8,
+.col-centered-9,
+.col-centered-10,
+.col-centered-11,
+.col-centered-12{
+  @include gridOverlay($colCenteredColor);
+}
+
+.row > div > *:after{
+  content:attr(class);
 }
