@@ -28,7 +28,6 @@ $colWidth : (100 / $numOfCols);
   $stops: join($first-stops, $last-stops, comma);
 
   background: linear-gradient(90deg, $stops), no-repeat;
-  background-size:cover;
 }
 
 // currently supporting 3 nested grids
