@@ -1,30 +1,29 @@
-$rowColor1: #4A90E2;
-$rowColor2: #BD10E0;
-$rowColor3: #FF9A00;
-$rowColor4: #D5FA00;
-$colCenteredColor: #2FD663;
+$overlay-color-1: rgba(74, 144, 226, 0.75);
+$overlay-color-2: rgba(189, 16, 224, 0.75);
+$overlay-color-3: rgba(255, 154, 0, 0.75);
+$overlay-color-4: rgba(213, 250, 0, 0.75);
+$overlay-color-5: rgba(47, 214, 99, 0.75);
 
+$col-padding : 10px;
+$num-of-cols : 12;
 
-$colPadding : 10px;
-$numOfCols : 12;
-
-$colWidth : (100 / $numOfCols);
+$col-width : (100 / $num-of-cols);
 
 @mixin gridOverlay($gridColor){
   // awesome scss loopage for gradient stops
   // (@jackiebackwards https://codepen.io/jackiebackwards/pen/Fzkvg)
-  $first-stops: transparent #{$colPadding},
-                $gridColor #{$colPadding};
+  $first-stops: transparent #{$col-padding},
+                $gridColor #{$col-padding};
 
-  $last-stops: $gridColor calc(100% - #{$colPadding}),
-               transparent calc(100% - #{$colPadding});
+  $last-stops: $gridColor calc(100% - #{$col-padding}),
+               transparent calc(100% - #{$col-padding});
 
 
-  @for $i from 1 through ($numOfCols - 1) {
-    $new-stops: $gridColor calc(#{$i*$colWidth}% - #{$colPadding}),
-                transparent calc(#{$i*$colWidth}% - #{$colPadding}),
-                transparent calc(#{$i*$colWidth}% + #{$colPadding}),
-                $gridColor calc(#{$i*$colWidth}% + #{$colPadding});
+  @for $i from 1 through ($num-of-cols - 1) {
+    $new-stops: $gridColor calc(#{$i*$col-width}% - #{$col-padding}),
+                transparent calc(#{$i*$col-width}% - #{$col-padding}),
+                transparent calc(#{$i*$col-width}% + #{$col-padding}),
+                $gridColor calc(#{$i*$col-width}% + #{$col-padding});
 
     $first-stops: join($first-stops, $new-stops, comma);
   }
@@ -34,51 +33,57 @@ $colWidth : (100 / $numOfCols);
   background: linear-gradient(90deg, $stops), no-repeat;
 }
 
-// currently supporting 3 nested grids
+// currently supporting 4 nested rows
 .row{
-  @include gridOverlay($rowColor1);
+  @include gridOverlay($overlay-color-1);
+  // &:hover::before{
+  //   background:#000;
+  //   color:#fff;
+  //   position:fixed;
+  //   top:0;
+  //   left:0;
+  //   width:100%;
+  //   height:10vh;
+  //   text-align:center;
+  //   content: '.row';
+  // }
 }
 .row .row{
-  @include gridOverlay($rowColor2);
+  @include gridOverlay($overlay-color-2);
 }
 .row .row .row{
-  @include gridOverlay($rowColor3);
+  @include gridOverlay($overlay-color-5);
 }
 .row .row .row .row{
-  @include gridOverlay($rowColor4);
+  @include gridOverlay($overlay-color-1);
+}
+.row .row .row .row .row{
+  @include gridOverlay($overlay-color-2);
+}
+.row .row .row .row .row .row{
+  @include gridOverlay($overlay-color-5);
 }
 
-.row,
-.col-centered-1,
-.col-centered-2,
-.col-centered-3,
-.col-centered-4,
-.col-centered-5,
-.col-centered-6,
-.col-centered-7,
-.col-centered-8,
-.col-centered-9,
-.col-centered-10,
-.col-centered-11,
-.col-centered-12{
-  @include gridOverlay($colCenteredColor);
+// currently supporting 2 nested col-centered
+
+$col-centered-selectors: '';
+$col-centered-selectors-2-deep: '';
+@for $i from 1 through 12{
+  $selector: '.col-centered-#{$i}';
+  $selectors-2-deep: '';
+  @for $j from 1 through 12{
+    $selector-2-deep: '.col-centered-#{$i} .col-centered-#{$j}';
+    $selectors-2-deep: join($selectors-2-deep, $selector-2-deep, comma);
+  }
+  $col-centered-selectors-2-deep: join($col-centered-selectors-2-deep, $selectors-2-deep, comma);
+  $col-centered-selectors: join($col-centered-selectors, $selector, comma);
+
 }
-// 
-// .row,
-// .col-centered-1,
-// .col-centered-2,
-// .col-centered-3,
-// .col-centered-4,
-// .col-centered-5,
-// .col-centered-6,
-// .col-centered-7,
-// .col-centered-8,
-// .col-centered-9,
-// .col-centered-10,
-// .col-centered-11,
-// .col-centered-12{
-//   &::after{
-//     content: attr(class);
-//     color:#000;
-//   }
-// }
+
+#{$col-centered-selectors} {
+  @include gridOverlay($overlay-color-3);
+}
+
+#{$col-centered-selectors-2-deep} {
+  @include gridOverlay($overlay-color-4);
+}
