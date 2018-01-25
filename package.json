@@ -17,7 +17,11 @@
   },
   "homepage": "https://github.com/cbfranklin/bootstrap-3-grid-overlay-css#readme",
   "devDependencies": {
+    "cssnano": "^3.10.0",
     "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.1.0",
+    "gulp-css-wrap": "^0.1.2",
+    "gulp-postcss": "^7.0.1",
     "gulp-sass": "^3.1.0"
   }
 }
