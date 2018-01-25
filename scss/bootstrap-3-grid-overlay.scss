@@ -9,7 +9,7 @@ $num-of-cols : 12;
 
 $col-width : (100 / $num-of-cols);
 
-@mixin gridOverlay($gridColor){
+@mixin grid-overlay($gridColor){
   // awesome scss loopage for gradient stops
   // (@jackiebackwards https://codepen.io/jackiebackwards/pen/Fzkvg)
   $first-stops: transparent #{$col-padding},
@@ -35,42 +35,33 @@ $col-width : (100 / $num-of-cols);
 
 // currently supporting 4 nested rows
 .row{
-  @include gridOverlay($overlay-color-1);
-  // &:hover::before{
-  //   background:#000;
-  //   color:#fff;
-  //   position:fixed;
-  //   top:0;
-  //   left:0;
-  //   width:100%;
-  //   height:10vh;
-  //   text-align:center;
-  //   content: '.row';
-  // }
+  @include grid-overlay($overlay-color-1);
 }
 .row .row{
-  @include gridOverlay($overlay-color-2);
+  @include grid-overlay($overlay-color-2);
 }
 .row .row .row{
-  @include gridOverlay($overlay-color-5);
+  @include grid-overlay($overlay-color-5);
 }
 .row .row .row .row{
-  @include gridOverlay($overlay-color-1);
+  @include grid-overlay($overlay-color-1);
 }
 .row .row .row .row .row{
-  @include gridOverlay($overlay-color-2);
+  @include grid-overlay($overlay-color-2);
 }
 .row .row .row .row .row .row{
-  @include gridOverlay($overlay-color-5);
+  @include grid-overlay($overlay-color-5);
 }
 
 // currently supporting 2 nested col-centered
 
 $col-centered-selectors: '';
 $col-centered-selectors-2-deep: '';
+// create selector for each col-centered-* class
 @for $i from 1 through 12{
   $selector: '.col-centered-#{$i}';
   $selectors-2-deep: '';
+  // create nesting for each col-centered-* class within each col-centered-* class
   @for $j from 1 through 12{
     $selector-2-deep: '.col-centered-#{$i} .col-centered-#{$j}';
     $selectors-2-deep: join($selectors-2-deep, $selector-2-deep, comma);
@@ -81,9 +72,9 @@ $col-centered-selectors-2-deep: '';
 }
 
 #{$col-centered-selectors} {
-  @include gridOverlay($overlay-color-3);
+  @include grid-overlay($overlay-color-3);
 }
 
 #{$col-centered-selectors-2-deep} {
-  @include gridOverlay($overlay-color-4);
+  @include grid-overlay($overlay-color-4);
 }
